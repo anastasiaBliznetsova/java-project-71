@@ -1,19 +1,19 @@
 package hexlet.code;
-import com.fasterxml.jackson.core.type.TypeReference;
+//import com.fasterxml.jackson.core.type.TypeReference;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
 
 import java.io.File;
-import java.math.BigInteger;
-import java.nio.file.Files;
+//import java.math.BigInteger;
+//import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.security.MessageDigest;
-import java.util.Map;
+//import java.security.MessageDigest;
+//import java.util.Map;
 import java.util.concurrent.Callable;
-import com.fasterxml.jackson.databind.ObjectMapper;
+//import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference.")
@@ -25,10 +25,7 @@ public class App implements Callable<Integer> {
     }
     @Override
     public Integer call() throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
-        Map<String, Object> map = objectMapper.readValue(file, new TypeReference<>(){});
-        Map<String, Object> map2 = objectMapper.readValue(file2, new TypeReference<>(){});
-        System.out.println(Differ.generate(map, map2));
+        System.out.println(Differ.generate(file, file2));
         return 0;
     }
     @Parameters(paramLabel = "filepath1", description = "path to first file")
@@ -43,5 +40,4 @@ public class App implements Callable<Integer> {
     boolean versionInfoRequested;
     @Option(names = {"-h", "--help"}, usageHelp = true, description = "Show this help message and exit.")
     boolean usageHelpRequested;
-
 }
