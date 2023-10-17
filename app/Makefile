@@ -3,30 +3,17 @@
 run-dist:
 	./build/install/app/bin/app
 	
-setup:
-	gradle wrapper --gradle-version 8.3
-
-clean:
-	./gradlew clean
-
-build:
-	./gradlew clean build
-
-run:
-	./gradlew run
+lint:
+	@./gradlew checkstyleMain checkstyleTest
 
 test:
-	./gradlew test
+	@./gradlew test
+
+build:
+	@./gradlew clean build
 
 report:
-	app/gradlew -p app jacocoTestReport
-
-lint:
-	./gradlew checkstyleMain
-
-check-deps:
-	./gradlew dependencyUpdates -Drevision=release
-
+	@./gradlew jacocoTestReport
 
 build-run: build run
 
