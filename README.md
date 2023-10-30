@@ -5,3 +5,4 @@
 Comparison of flat files (JSON): https://asciinema.org/a/gU5dwsOybhSWJJAsLU06pdF0q  
 
 Comparison of flat files (yaml): https://asciinema.org/a/O5cHVuvd2SWEyqS7D8mQwtcRe  
+Default data processing: https://asciinema.org/a/sWF0341cE4QgU1RJASkzJTalF

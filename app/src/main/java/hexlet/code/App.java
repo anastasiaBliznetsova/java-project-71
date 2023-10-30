@@ -25,7 +25,7 @@ public class App implements Callable<Integer> {
     }
     @Override
     public Integer call() throws Exception {
-        System.out.println(Differ.generate(fileName1, fileName2));
+        System.out.println(Differ.generate(fileName1, fileName2, format));
         return 0;
     }
 
@@ -33,7 +33,9 @@ public class App implements Callable<Integer> {
     private String fileName1;
     @Parameters(paramLabel = "filepath2", description = "path to first file")
     private String fileName2;
-    @Option(names = {"-f", "--format"}, paramLabel = "format", description = "output format [default: stylish]")
+    @Option(names = {"-f", "--format"},
+            description = "output format: stylish, plain, json, no-format [default: ${DEFAULT-VALUE}]",
+            defaultValue = "stylish")
     private String format;
     @Option(names = {"-V", "--version"}, versionHelp = true, description = "Print version information and exit.")
     boolean versionInfoRequested;
