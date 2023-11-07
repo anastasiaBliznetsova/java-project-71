@@ -108,7 +108,7 @@ public class TestsDiffer {
                 + "Property 'obj1' was added with value: [complex value]\n"
                 + "Property 'proxy' was removed\n"
                 + "Property 'timeout' was updated. From 50 to [complex value]\n"
-                + "Property 'verbose' was added with value: true\n";
+                + "Property 'verbose' was added with value: true";
         assertEquals(Differ.generate(PATH + "file1.json", PATH + "file3.json", "plain"), result);
     }
     @Test
@@ -117,7 +117,7 @@ public class TestsDiffer {
                 + "Property 'obj1' was added with value: [complex value]\n"
                 + "Property 'proxy' was removed\n"
                 + "Property 'timeout' was updated. From 50 to [complex value]\n"
-                + "Property 'verbose' was added with value: true\n";
+                + "Property 'verbose' was added with value: true";
         assertEquals(Differ.generate(PATH + "file1.yml", PATH + "file3.yml", "plain"), result);
     }
     @Test

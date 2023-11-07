@@ -27,12 +27,14 @@ public class Plain {
                     break;
             }
         }
-        return result.toString();
+        return result.toString().trim();
     }
 
     public static String replaceWithComplexValue(Object value) {
         if (value instanceof Collection<?> || value instanceof Arrays || value instanceof Map<?, ?>) {
             return "[complex value]";
+        } else if (value instanceof String) {
+            return "'" + value + "'";
         }
         return value.toString();
     }
