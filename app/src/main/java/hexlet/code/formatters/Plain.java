@@ -1,4 +1,6 @@
 package hexlet.code.formatters;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -29,11 +31,7 @@ public class Plain {
     }
 
     public static String replaceWithComplexValue(Object value) {
-        if (value == null) {
-            return "null";
-        }
-        if (!(value instanceof String) && !(value instanceof Integer)
-                && !(value instanceof Boolean)) {
+        if (value instanceof Collection<?> || value instanceof Arrays || value instanceof Map<?, ?>) {
             return "[complex value]";
         }
         return value.toString();
