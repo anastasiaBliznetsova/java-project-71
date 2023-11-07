@@ -34,6 +34,7 @@ public class Differ {
             Map<Object, Object> resultMap = new LinkedHashMap<>();
             overallTreeMap.putIfAbsent(key, "null");
             if (mapFileOne.containsKey(key)) {
+                mapFileOne.putIfAbsent(key, "null");
                 if (!mapFileTwo.containsKey(key)) {
                     resultMap.put("event", "removed");
                     resultMap.put("key", key);

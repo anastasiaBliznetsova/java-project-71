@@ -33,10 +33,10 @@ public class Plain {
     public static String replaceWithComplexValue(Object value) {
         if (value instanceof Collection<?> || value instanceof Arrays || value instanceof Map<?, ?>) {
             return "[complex value]";
+        } else if (value.equals("null")) {
+            return "null";
         } else if (value instanceof String) {
             return "'" + value + "'";
-        } else if (value == null) {
-            return "null";
         }
         return value.toString();
     }
