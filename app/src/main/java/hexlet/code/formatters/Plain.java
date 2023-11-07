@@ -1,6 +1,4 @@
 package hexlet.code.formatters;
-import java.util.Arrays;
-import java.util.Collection;
 import java.util.List;
 import java.util.Map;
 
@@ -14,19 +12,14 @@ public class Plain {
                     break;
                 case "added":
                     result.append("Property '")
-                            .append(map.get("key"))
-                            .append("' was added with value: ")
-                            .append(replaceWithComplexValue(map.get("value")))
-                            .append("\n");
+                            .append(map.get("key")).append("' was added with value: ")
+                            .append(replaceWithComplexValue(map.get("value"))).append("\n");
                     break;
                 case "updated":
                     result.append("Property '")
-                            .append(map.get("key"))
-                            .append("' was updated. From ")
-                            .append(replaceWithComplexValue(map.get("oldValue")))
-                            .append(" to ")
-                            .append(replaceWithComplexValue(map.get("newValue")))
-                            .append("\n");
+                            .append(map.get("key")).append("' was updated. From ")
+                            .append(replaceWithComplexValue(map.get("oldValue"))).append(" to ")
+                            .append(replaceWithComplexValue(map.get("newValue"))).append("\n");
                     break;
                 default:
                     break;
@@ -36,9 +29,12 @@ public class Plain {
     }
 
     public static String replaceWithComplexValue(Object value) {
-        if (value instanceof Collection<?> || value instanceof Arrays
-                || value instanceof Map<?, ?>) {
-            return  "[complex value]";
+        if (value == null) {
+            return "null";
+        }
+        if (!(value instanceof String) && !(value instanceof Integer)
+                && !(value instanceof Boolean)) {
+            return "[complex value]";
         }
         return value.toString();
     }
