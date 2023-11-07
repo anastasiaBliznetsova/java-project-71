@@ -1,33 +1,30 @@
 package hexlet.code.formatters;
-
+import java.util.List;
 import java.util.Map;
 
 public class Stylish {
-    public static String stylish(Map<Object, Object> map, Map<Object, Object> map2, Map<Object, Object> resultMap) {
-        String result = "{\n";
-        for (Object key: resultMap.keySet()) {
-            if (resultMap.get(key) == null) {
-                resultMap.put(key, "null");
-            }
-            if (map.containsKey(key)) {
-                if (map.get(key) == null) {
-                    map.put(key, "null");
-                }
-                if (!map2.containsKey(key)) {
-                    result += "- " + key + ": " + resultMap.get(key) + "\n";
-                } else if (resultMap.get(key).equals(map.get(key))) {
-                    result += "  " + key + ": " + resultMap.get(key) + "\n";
-                } else {
-                    result += "- " + key + ": " + map.get(key) + "\n";
-                    result += "+ " + key + ": " + resultMap.get(key) + "\n";
-                }
-            } else if (map2.containsKey(key)) {
-                result += "+ " + key + ": " + resultMap.get(key) + "\n";
-            } else {
-                result += "- " + key + ": " + resultMap.get(key) + "\n";
+    public static String stylish(List<Map<Object, Object>> list) {
+        StringBuilder result = new StringBuilder("{\n");
+        for (Map<Object, Object> map: list) {
+            switch (map.get("event").toString()) {
+                case "removed":
+                    result.append("- ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
+                    break;
+                case "not changed":
+                    result.append("  ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
+                    break;
+                case "added":
+                    result.append("+ ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
+                    break;
+                case "updated":
+                    result.append("- ").append(map.get("key")).append(": ").append(map.get("oldValue")).append("\n");
+                    result.append("+ ").append(map.get("key")).append(": ").append(map.get("newValue")).append("\n");
+                    break;
+                default:
+                    break;
             }
         }
-        result += "}";
-        return result;
+        result.append("}");
+        return result.toString();
     }
 }

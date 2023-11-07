@@ -1,0 +1,10 @@
+timeout:
+  - 1
+  - 2
+  - 3
+  - 4
+verbose: true
+host: hexlet.io
+obj1:
+  nestedKey: value
+  isNested: true

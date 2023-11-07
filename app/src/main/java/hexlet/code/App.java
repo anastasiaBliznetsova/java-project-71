@@ -1,19 +1,9 @@
 package hexlet.code;
-//import com.fasterxml.jackson.core.type.TypeReference;
 import picocli.CommandLine;
 import picocli.CommandLine.Command;
 import picocli.CommandLine.Option;
 import picocli.CommandLine.Parameters;
-
-//import java.io.File;
-//import java.math.BigInteger;
-//import java.nio.file.Files;
-//import java.nio.file.Path;
-//import java.nio.file.Paths;
-//import java.security.MessageDigest;
-//import java.util.Map;
 import java.util.concurrent.Callable;
-//import com.fasterxml.jackson.databind.ObjectMapper;
 
 @Command(name = "gendiff", mixinStandardHelpOptions = true, version = "gendiff 1.0",
         description = "Compares two configuration files and shows a difference.")
