@@ -13,29 +13,19 @@ public class Plain {
                     result.append("Property '").append(map.get("key")).append("' was removed").append("\n");
                     break;
                 case "added":
-                    if (map.get("value") instanceof Collection<?> || map.get("value") instanceof Arrays
-                            || map.get("value") instanceof Map<?, ?>) {
-                        map.put("value", "[complex value]");
-                    }
                     result.append("Property '")
                             .append(map.get("key"))
                             .append("' was added with value: ")
-                            .append(map.get("value"))
+                            .append(replaceWithComplexValue(map.get("value")))
                             .append("\n");
                     break;
                 case "updated":
-                    if (!(map.get("oldValue") instanceof String) && !(map.get("oldValue") instanceof Integer)) {
-                        map.put("oldValue", "[complex value]");
-                    }
-                    if (!(map.get("newValue") instanceof String)) {
-                        map.put("newValue", "[complex value]");
-                    }
                     result.append("Property '")
                             .append(map.get("key"))
                             .append("' was updated. From ")
-                            .append(map.get("oldValue"))
+                            .append(replaceWithComplexValue(map.get("oldValue")))
                             .append(" to ")
-                            .append(map.get("newValue"))
+                            .append(replaceWithComplexValue(map.get("newValue")))
                             .append("\n");
                     break;
                 default:
@@ -43,5 +33,13 @@ public class Plain {
             }
         }
         return result.toString();
+    }
+
+    public static String replaceWithComplexValue(Object value) {
+        if (value instanceof Collection<?> || value instanceof Arrays
+                || value instanceof Map<?, ?>) {
+            return  "[complex value]";
+        }
+        return value.toString();
     }
 }

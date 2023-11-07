@@ -18,10 +18,13 @@ public class Differ {
         ObjectMapper objectMapper = Parser.parser(fileOneName);
         Map<Object, Object> mapFileOne = objectMapper.readValue(fileOneData, new TypeReference<>() { });
         Map<Object, Object> mapFileTwo = objectMapper.readValue(fileTwoData, new TypeReference<>() { });
+        return Formatter.choosingFormatter(filling(mapFileOne, mapFileTwo), format);
+    }
+
+    public static List<Map<Object, Object>> filling(Map<Object, Object> mapFileOne, Map<Object, Object> mapFileTwo) {
         Map<Object, Object> overallTreeMap = new TreeMap<>();
         overallTreeMap.putAll(mapFileOne);
         overallTreeMap.putAll(mapFileTwo);
-
         List<Map<Object, Object>> resultList = new ArrayList<>();
         for (Object key : overallTreeMap.keySet()) {
             Map<Object, Object> resultMap = new LinkedHashMap<>();
@@ -49,7 +52,7 @@ public class Differ {
             }
             resultList.add(resultMap);
         }
-        return Formatter.choosingFormatter(resultList, format);
+        return resultList;
     }
 
     public static String getData(String nameFile) throws IOException {
