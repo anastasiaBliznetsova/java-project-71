@@ -21,6 +21,10 @@ public class Differ {
         return Formatter.choosingFormatter(filling(mapFileOne, mapFileTwo), format);
     }
 
+    public static String generate(String fileOneName, String fileTwoName) throws IOException {
+        return generate(fileOneName, fileTwoName, "stylish");
+    }
+
     public static List<Map<Object, Object>> filling(Map<Object, Object> mapFileOne, Map<Object, Object> mapFileTwo) {
         Map<Object, Object> overallTreeMap = new TreeMap<>();
         overallTreeMap.putAll(mapFileOne);
