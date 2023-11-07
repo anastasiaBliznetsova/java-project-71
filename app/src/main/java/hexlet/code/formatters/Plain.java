@@ -35,6 +35,8 @@ public class Plain {
             return "[complex value]";
         } else if (value instanceof String) {
             return "'" + value + "'";
+        } else if (value == null) {
+            return "null";
         }
         return value.toString();
     }
