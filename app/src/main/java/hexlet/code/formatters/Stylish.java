@@ -8,17 +8,17 @@ public class Stylish {
         for (Map<Object, Object> map: list) {
             switch (map.get("event").toString()) {
                 case "removed":
-                    result.append("- ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
+                    result.append("  - ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
                     break;
                 case "not changed":
-                    result.append("  ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
+                    result.append("    ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
                     break;
                 case "added":
-                    result.append("+ ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
+                    result.append("  + ").append(map.get("key")).append(": ").append(map.get("value")).append("\n");
                     break;
                 case "updated":
-                    result.append("- ").append(map.get("key")).append(": ").append(map.get("oldValue")).append("\n");
-                    result.append("+ ").append(map.get("key")).append(": ").append(map.get("newValue")).append("\n");
+                    result.append("  - ").append(map.get("key")).append(": ").append(map.get("oldValue")).append("\n");
+                    result.append("  + ").append(map.get("key")).append(": ").append(map.get("newValue")).append("\n");
                     break;
                 default:
                     break;
