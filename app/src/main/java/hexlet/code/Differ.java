@@ -9,8 +9,8 @@ public class Differ {
     public static String generate(String nameOne, String nameTwo, String format) throws IOException {
         String dataOne = getData(nameOne);
         String dataTwo = getData(nameTwo);
-        Map<Object, Object> mapOne = Parser.parser(dataOne, nameOne);
-        Map<Object, Object> mapTwo = Parser.parser(dataTwo, nameTwo);
+        Map<String, Object> mapOne = Parser.parser(dataOne, nameOne);
+        Map<String, Object> mapTwo = Parser.parser(dataTwo, nameTwo);
         return Formatter.choosingFormatter(Difference.filling(mapOne, mapTwo), format);
     }
 

@@ -8,11 +8,11 @@ import java.util.LinkedHashMap;
 
 
 public class Difference {
-    public static List<Map<String, Object>> filling(Map<Object, Object> mapOne, Map<Object, Object> mapTwo) {
-        Set<Object> keySet = new TreeSet<>(mapOne.keySet());
+    public static List<Map<String, Object>> filling(Map<String, Object> mapOne, Map<String, Object> mapTwo) {
+        Set<String> keySet = new TreeSet<>(mapOne.keySet());
         keySet.addAll(mapTwo.keySet());
         List<Map<String, Object>> resultList = new ArrayList<>();
-        for (Object key : keySet) {
+        for (String key : keySet) {
             Map<String, Object> resultMap = new LinkedHashMap<>();
             if (!mapTwo.containsKey(key)) {
                 resultMap.put("event", "removed");
