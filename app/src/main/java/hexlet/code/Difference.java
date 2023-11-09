@@ -14,11 +14,11 @@ public class Difference {
         List<Map<String, Object>> resultList = new ArrayList<>();
         for (String key : keySet) {
             Map<String, Object> resultMap = new LinkedHashMap<>();
-            if (!mapTwo.containsKey(key)) {
+            if (!mapTwo.containsKey(key) && mapOne.containsKey(key)) {
                 resultMap.put("event", "removed");
                 resultMap.put("key", key);
                 resultMap.put("value", mapOne.get(key));
-            } else if (!mapOne.containsKey(key)) {
+            } else if (!mapOne.containsKey(key) && mapTwo.containsKey(key)) {
                 resultMap.put("event", "added");
                 resultMap.put("key", key);
                 resultMap.put("value", mapTwo.get(key));
