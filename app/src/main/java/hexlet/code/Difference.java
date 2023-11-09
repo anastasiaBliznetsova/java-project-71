@@ -22,7 +22,7 @@ public class Difference {
                 resultMap.put("event", "added");
                 resultMap.put("key", key);
                 resultMap.put("value", mapTwo.get(key));
-            } else if (!Objects.equals(mapOne.get(key), mapTwo.get(key))) {
+            } else if (!isEquals(mapOne.get(key), mapTwo.get(key))) {
                 resultMap.put("event", "updated");
                 resultMap.put("key", key);
                 resultMap.put("oldValue", mapOne.get(key));
@@ -35,5 +35,15 @@ public class Difference {
             resultList.add(resultMap);
         }
         return resultList;
+    }
+
+    public static boolean isEquals(Object valueOne, Object valueTwo) {
+        if (valueOne == null && valueTwo == null) {
+            return true;
+        } else if (valueOne == null || valueTwo == null) {
+            return false;
+        } else {
+            return Objects.equals(valueOne, valueTwo);
+        }
     }
 }
