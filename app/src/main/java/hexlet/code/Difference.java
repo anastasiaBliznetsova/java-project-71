@@ -17,21 +17,20 @@ public class Difference {
             if (!mapTwo.containsKey(key)) {
                 resultMap.put("event", "removed");
                 resultMap.put("key", key);
-                resultMap.put("value", mapOne.getOrDefault(key, "null"));
+                resultMap.put("value", mapOne.get(key));
             } else if (!mapOne.containsKey(key)) {
                 resultMap.put("event", "added");
                 resultMap.put("key", key);
-                resultMap.put("value", mapTwo.getOrDefault(key, "null"));
-            } else if (!isEquals(mapOne.getOrDefault(key, "null"),
-                    mapTwo.getOrDefault(key, "null"))) {
+                resultMap.put("value", mapTwo.get(key));
+            } else if (!isEquals(mapOne.get(key), mapTwo.get(key))) {
                 resultMap.put("event", "updated");
                 resultMap.put("key", key);
-                resultMap.put("oldValue", mapOne.getOrDefault(key, "null"));
-                resultMap.put("newValue", mapTwo.getOrDefault(key, "null"));
+                resultMap.put("oldValue", mapOne.get(key));
+                resultMap.put("newValue", mapTwo.get(key));
             } else {
                 resultMap.put("event", "not changed");
                 resultMap.put("key", key);
-                resultMap.put("value", mapOne.getOrDefault(key, "null"));
+                resultMap.put("value", mapOne.get(key));
             }
             resultList.add(resultMap);
         }

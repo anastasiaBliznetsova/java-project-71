@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class TestsDiffer {
-    static final String PATH = "src/test/resources/";
     private static Path getFixturePath(String fileName) {
         return Paths.get("src", "test", "resources", "fixtures", fileName)
                 .toAbsolutePath().normalize();
@@ -19,31 +18,31 @@ public class TestsDiffer {
 
     @Test
     public void testStylishWithEmptyFile() throws Exception {
-        assertEquals(Differ.generate(PATH + "file1.json",
-                        PATH + "fileEmpty.json", "stylish"),
-                readFixture("StylishWithEmptyFile"));
+        assertEquals(Differ.generate(readFixture("file1.json"),
+                readFixture("fileEmpty.json"), "stylish"),
+                readFixture("stylishWithEmptyFile"));
     }
 
     @Test
     public void testStylishWithFilesJsonArray() throws Exception {
-        assertEquals(Differ.generate(PATH + "fileWithArray1.json",
-                        PATH + "fileWithArray2.json", "stylish"),
-                readFixture("StylishWithFilesJsonArray"));
+        assertEquals(Differ.generate(readFixture("fileWithArray1.json"),
+                readFixture("fileWithArray2.json"), "stylish"),
+                readFixture("stylishWithFilesJsonArray"));
     }
     @Test
     public void testStylishWithFilesYmlArray() throws Exception {
-        assertEquals(Differ.generate(PATH + "fileWithArray1.yml",
-                        PATH + "fileWithArray2.yml", "stylish"),
-                readFixture("StylishWithFilesJsonArray"));
+        assertEquals(Differ.generate(readFixture("fileWithArray1.yml"),
+                readFixture("fileWithArray2.yml"), "stylish"),
+                readFixture("stylishWithFilesJsonArray"));
     }
     @Test
     public void testPlainWithJsonFiles() throws Exception {
-        assertEquals(Differ.generate(PATH + "file1.json", PATH + "file3.json", "plain"),
-                readFixture("PlainWithJsonFiles"));
+        assertEquals(Differ.generate(readFixture("file1.json"), readFixture("file3.json"), "plain"),
+                readFixture("plainWithJsonFiles"));
     }
     @Test
     public void testInpitJson() throws Exception {
-        assertEquals(Differ.generate(PATH + "file1.json", PATH + "file3.json", "json"),
-                readFixture("InpitJson"));
+        assertEquals(Differ.generate(readFixture("file1.json"), readFixture("file3.json"), "json"),
+                readFixture("inpitJson"));
     }
 }
