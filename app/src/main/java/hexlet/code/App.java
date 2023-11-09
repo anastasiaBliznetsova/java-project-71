@@ -18,7 +18,6 @@ class App implements Callable<Integer> {
         System.out.println(Differ.generate(fileName1, fileName2, format));
         return 0;
     }
-
     @Parameters(paramLabel = "filepath1", description = "path to first file")
     private String fileName1;
     @Parameters(paramLabel = "filepath2", description = "path to first file")

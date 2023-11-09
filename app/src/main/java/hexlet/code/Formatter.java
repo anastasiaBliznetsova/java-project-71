@@ -7,7 +7,7 @@ import java.util.List;
 import java.util.Map;
 
 public class Formatter {
-    public static String choosingFormatter(List<Map<Object, Object>> map, String format)
+    public static String choosingFormatter(List<Map<String, Object>> map, String format)
             throws JsonProcessingException {
         switch (format) {
             case "stylish":

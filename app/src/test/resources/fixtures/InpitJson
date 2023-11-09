@@ -1,0 +1,1 @@
+[{"event":"removed","key":"follow","value":false},{"event":"not changed","key":"host","value":"hexlet.io"},{"event":"added","key":"obj1","value":{"nestedKey":"value","isNested":true}},{"event":"removed","key":"proxy","value":"123.234.53.22"},{"event":"updated","key":"timeout","oldValue":50,"newValue":[1,2,3,4]},{"event":"added","key":"verbose","value":true}]
