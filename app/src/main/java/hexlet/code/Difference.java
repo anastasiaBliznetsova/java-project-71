@@ -22,7 +22,8 @@ public class Difference {
                 resultMap.put("event", "added");
                 resultMap.put("key", key);
                 resultMap.put("value", mapTwo.get(key));
-            } else if (!isEquals(mapOne.get(key), mapTwo.get(key))) {
+            } else if (mapOne.containsKey(key) && mapTwo.containsKey(key)
+                    && !isEquals(mapOne.get(key), mapTwo.get(key))) {
                 resultMap.put("event", "updated");
                 resultMap.put("key", key);
                 resultMap.put("oldValue", mapOne.get(key));
