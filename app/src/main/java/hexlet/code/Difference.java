@@ -5,7 +5,7 @@ import java.util.List;
 import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Objects;
+
 
 public class Difference {
     public static List<Map<String, Object>> filling(Map<Object, Object> mapOne, Map<Object, Object> mapTwo) {
@@ -44,7 +44,7 @@ public class Difference {
         } else if (valueOne == null || valueTwo == null) {
             return false;
         } else {
-            return Objects.equals(valueOne, valueTwo);
+            return valueOne.equals(valueTwo);
         }
     }
 }
