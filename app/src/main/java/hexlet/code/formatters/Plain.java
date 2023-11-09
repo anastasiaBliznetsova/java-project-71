@@ -10,18 +10,18 @@ public class Plain {
         for (Map<String, Object> map: list) {
             switch (map.get("event").toString()) {
                 case "removed":
-                    result.append("Property '").append(map.get("key")).append("' was removed").append("\r\n");
+                    result.append("Property '").append(map.get("key")).append("' was removed").append("\n");
                     break;
                 case "added":
                     result.append("Property '")
                             .append(map.get("key")).append("' was added with value: ")
-                            .append(replaceWithComplexValue(map.get("value"))).append("\r\n");
+                            .append(replaceWithComplexValue(map.get("value"))).append("\n");
                     break;
                 case "updated":
                     result.append("Property '")
                             .append(map.get("key")).append("' was updated. From ")
                             .append(replaceWithComplexValue(map.get("oldValue"))).append(" to ")
-                            .append(replaceWithComplexValue(map.get("newValue"))).append("\r\n");
+                            .append(replaceWithComplexValue(map.get("newValue"))).append("\n");
                     break;
                 default:
                     break;
