@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.TreeSet;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
-import java.util.Objects;
 
 public class Difference {
     public static List<Map<String, Object>> filling(Map<String, Object> mapOne, Map<String, Object> mapTwo) {
@@ -13,57 +12,36 @@ public class Difference {
         keySet.addAll(mapTwo.keySet());
         List<Map<String, Object>> resultList = new ArrayList<>();
         for (String key : keySet) {
+            Object valueMapOne = checkForNull(mapOne.get(key));
+            Object valueMapTwo = checkForNull(mapTwo.get(key));
             Map<String, Object> resultMap = new LinkedHashMap<>();
             if (!mapTwo.containsKey(key)) {
                 resultMap.put("event", "removed");
                 resultMap.put("key", key);
-                if (mapOne.get(key) == null) {
-                    resultMap.put("value", "null");
-                } else {
-                    resultMap.put("value", mapOne.get(key));
-                }
+                resultMap.put("value", valueMapOne);
             } else if (!mapOne.containsKey(key)) {
                 resultMap.put("event", "added");
                 resultMap.put("key", key);
-                if (mapTwo.get(key) == null) {
-                    resultMap.put("value", "null");
-                } else {
-                    resultMap.put("value", mapTwo.get(key));
-                }
-            } else if (!isEquals(mapOne.get(key), mapTwo.get(key))) {
+                resultMap.put("value", valueMapTwo);
+            } else if (!valueMapOne.equals(valueMapTwo)) {
                 resultMap.put("event", "updated");
                 resultMap.put("key", key);
-                if (mapOne.get(key) == null) {
-                    resultMap.put("oldValue", "null");
-                } else {
-                    resultMap.put("oldValue", mapOne.get(key));
-                }
-                if (mapTwo.get(key) == null) {
-                    resultMap.put("newValue", "null");
-                } else {
-                    resultMap.put("newValue", mapTwo.get(key));
-                }
+                resultMap.put("oldValue", valueMapOne);
+                resultMap.put("newValue", valueMapTwo);
             } else {
                 resultMap.put("event", "not changed");
                 resultMap.put("key", key);
-                if (mapOne.get(key) == null) {
-                    resultMap.put("value", "null");
-                } else {
-                    resultMap.put("value", mapOne.get(key));
-                }
+                resultMap.put("value", valueMapOne);
             }
             resultList.add(resultMap);
         }
         return resultList;
     }
-
-    public static boolean isEquals(Object valueOne, Object valueTwo) {
-        if (valueOne == null && valueTwo == null) {
-            return true;
-        } else if (valueOne == null || valueTwo == null) {
-            return false;
+    public static Object checkForNull(Object value) {
+        if (value == null) {
+            return "null";
         } else {
-            return Objects.equals(valueOne, valueTwo);
+            return value;
         }
     }
 }
