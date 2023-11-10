@@ -17,20 +17,40 @@ public class Difference {
             if (!mapTwo.containsKey(key)) {
                 resultMap.put("event", "removed");
                 resultMap.put("key", key);
-                resultMap.put("value", mapOne.get(key));
+                if (mapOne.get(key) == null) {
+                    resultMap.put("value", "null");
+                } else {
+                    resultMap.put("value", mapOne.get(key));
+                }
             } else if (!mapOne.containsKey(key)) {
                 resultMap.put("event", "added");
                 resultMap.put("key", key);
-                resultMap.put("value", mapTwo.get(key));
+                if (mapTwo.get(key) == null) {
+                    resultMap.put("value", "null");
+                } else {
+                    resultMap.put("value", mapTwo.get(key));
+                }
             } else if (!isEquals(mapOne.get(key), mapTwo.get(key))) {
                 resultMap.put("event", "updated");
                 resultMap.put("key", key);
-                resultMap.put("oldValue", mapOne.get(key));
-                resultMap.put("newValue", mapTwo.get(key));
+                if (mapOne.get(key) == null) {
+                    resultMap.put("oldValue", "null");
+                } else {
+                    resultMap.put("oldValue", mapOne.get(key));
+                }
+                if (mapTwo.get(key) == null) {
+                    resultMap.put("newValue", "null");
+                } else {
+                    resultMap.put("newValue", mapTwo.get(key));
+                }
             } else {
                 resultMap.put("event", "not changed");
                 resultMap.put("key", key);
-                resultMap.put("value", mapOne.get(key));
+                if (mapOne.get(key) == null) {
+                    resultMap.put("value", "null");
+                } else {
+                    resultMap.put("value", mapOne.get(key));
+                }
             }
             resultList.add(resultMap);
         }
